@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import cl.skar.cyberpc.FullScreenViewActivity;
 import cl.skar.cyberpc.R;
+import uk.co.senab.photoview.PhotoView;
 
 /**
  * Created by trabajo on 16/09/2016.
@@ -46,12 +47,13 @@ public class GridViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
         if (convertView == null) {
-            imageView = (ImageView) parent.findViewById(R.id.imageView);
+            imageView = new PhotoView(activity);
         } else {
             imageView = (ImageView) convertView;
         }
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         Glide.with(activity).load(urls.get(position)).into(imageView);
+        imageView.setOnClickListener(new OnImageClickListener(position));
         return imageView;
     }
     class OnImageClickListener implements View.OnClickListener {
