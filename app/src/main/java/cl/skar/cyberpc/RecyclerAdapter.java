@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
 
 import java.util.ArrayList;
 
@@ -37,8 +39,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final PhotoViewAttacher attacher = new PhotoViewAttacher(holder.photoView);
+        GlideUrl glideUrl = new GlideUrl(list.get(position)+"/");
         Glide.with(context)
-                .load(list.get(position))
+                .load(glideUrl)
+                .fitCenter()
+                .centerCrop()
                 .into(holder.photoView);
     }
 
