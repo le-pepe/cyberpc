@@ -24,7 +24,7 @@ public class Principal extends AppCompatActivity {
         RecyclerAdapter adapter = new RecyclerAdapter(list, this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
     }
 }

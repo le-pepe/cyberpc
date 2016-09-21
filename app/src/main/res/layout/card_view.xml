@@ -6,8 +6,6 @@
     <uk.co.senab.photoview.PhotoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imageView_recycler"
-        android:src="@drawable/ic_not_interested_black_48dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:id="@+id/imageView_recycler"/>
 
 </android.support.v7.widget.CardView>
