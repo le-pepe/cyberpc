@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class ImageUtil {
 
-    protected static String URL = "http://172.24.100.26/lorem.php";
+    protected static String URL = "https://raw.githubusercontent.com/xSkArx/cyberpc/master/app/src/main/assets/url.json";
 
 
 

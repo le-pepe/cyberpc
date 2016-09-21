@@ -1,7 +1,9 @@
 package cl.skar.cyberpc;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +31,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
-        RecyclerAdapter.ViewHolder holder = new RecyclerAdapter.ViewHolder(layoutView);
-        return holder;
+        CardView layoutView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
+        return new RecyclerAdapter.ViewHolder(layoutView);
+
     }
 
     @Override
@@ -39,12 +41,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final PhotoViewAttacher attacher = new PhotoViewAttacher(holder.photoView);
         Picasso.with(context)
                 .load(list.get(position))
-                .centerCrop()
-                .fit()
+                //.centerCrop()
                 .into(holder.photoView, new Callback() {
                     @Override
                     public void onSuccess() {
                         attacher.update();
+                        Log.d("attacher updated", "Picasso");
                     }
 
                     @Override
