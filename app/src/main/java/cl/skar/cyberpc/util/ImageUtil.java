@@ -16,9 +16,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Created by trabajo on 20/09/2016.
- */
 public class ImageUtil {
 
     protected static String URL = "https://raw.githubusercontent.com/xSkArx/cyberpc/master/app/src/main/assets/url.json";
@@ -29,7 +26,7 @@ public class ImageUtil {
         RequestQueue queue = Volley.newRequestQueue(activity);
 // Request a string response from the provided URL.
         JsonArrayRequest jsArrayRequest;
-        final ArrayList<String> list = new ArrayList<String>();
+        final ArrayList<String> list = new ArrayList<>();
 
         jsArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -46,9 +43,8 @@ public class ImageUtil {
                             }
                             String url = null;
                             try {
-                                url = jresponse.getString("url");
-                                Log.d("url", url);
-                            } catch (JSONException e) {
+                                url = jresponse != null ? jresponse.getString("url") : null;
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             list.add(url);

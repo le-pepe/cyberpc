@@ -1,18 +1,20 @@
 package cl.skar.cyberpc;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.GridView;
+import android.view.View;
 
 import java.util.ArrayList;
 
 import cl.skar.cyberpc.util.ImageUtil;
+import cl.skar.cyberpc.util.RecyclerItemClickListener;
 
 public class Principal extends AppCompatActivity {
+
     Toolbar toolbar;
 
     @Override
@@ -27,5 +29,16 @@ public class Principal extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(getApplicationContext(), FullScreenViewActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+            }
+        }));
     }
+
+
 }
